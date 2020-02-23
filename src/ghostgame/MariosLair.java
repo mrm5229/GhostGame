@@ -15,7 +15,7 @@ public class MariosLair {
 
 	public static void main(String[] args) {
 
-		String input; // holds user String input
+		int input; // holds user String input
 		String playerName; // holds name of player
 		int difficulty; // holds difficulty level selected by player
 
@@ -38,30 +38,65 @@ public class MariosLair {
 		RegularGhost lampy = new RegularGhost(); // uses default constructor
 		bedroom.setEnemy(lampy);
 		Room living = new Room();
-		RegularGhost couchy = new RegularGhost(15, 10); // uses overloaded constructor 1
+		RegularGhost couchy = new RegularGhost(15, 20); // uses overloaded constructor 1
 		living.setEnemy(couchy);
 		Room kitchen = new Room();
-		RegularGhost foody = new RegularGhost(); // uses overloaded constructor 2
+		RegularGhost foody = new RegularGhost(15, 10, 10); // uses overloaded constructor 2
+		// TODO: change foody's parameters to be based on user input difficulty
+		kitchen.setEnemy(foody);
 		Room basement = new Room();
-		// BoosGhost bigBaddy = new BossGhost(); // uses default constructor
+		BossGhost bigBaddy = new BossGhost(); // uses default constructor
+		basement.setEnemy(bigBaddy);
 
 		// Game Begins
 		System.out.println("Welcome...ADD MORE GAME LORE LATER\n" + "What is your name?");
 		playerName = keyboard.nextLine();
 		System.out.println("Nice to meet you " + playerName + "\nWhat level ghost hunter are you?\n"
-				+ "'1' for Beginnner\n" + "'2' for Experienced\n" + "'3' for Expert");
+				+ "'1' for Beginner\n" + "'2' for Experienced\n" + "'3' for Expert");
 
-		/*
-		 * gets difficulty from player - not sure this is necessary do {
-		 * System.out.println("Enter your level: "); difficulty = keyboard.nextInt(); if
-		 * (difficulty == 1) { System.out.println("Difficulty is 1"); } else if
-		 * (difficulty == 2) { System.out.println("Difficulty is 2"); } else if
-		 * (difficulty == 3) { System.out.println("Difficulty is 3"); } else {
-		 * System.out.println("Must enter 1, 2, or 3");
-		 * 
-		 * } } while (difficulty < 1 || difficulty > 3);
-		 */
+		// gets difficulty from player then changes foody's parameters based on that
+		// difficulty
+		do {
+			System.out.println("Enter your level: ");
+			difficulty = keyboard.nextInt();
+			if (difficulty == 1) {
+				foody.setEscape(10);
+				foody.setDamage(10);
+				foody.setHealthRestore(15);
+				System.out.println("Beginner selected");
+			} else if (difficulty == 2) {
+				foody.setEscape(15);
+				foody.setDamage(20);
+				foody.setHealthRestore(10);
+				System.out.println("Experienced selected");
+			} else if (difficulty == 3) {
+				foody.setEscape(20);
+				foody.setDamage(30);
+				foody.setHealthRestore(5);
+				System.out.println("Expert selected");
+			} else {
+				System.out.println("Must enter 1, 2, or 3");
 
+			}
+		} while (difficulty < 1 || difficulty > 3);
+
+		System.out.println("ENTER MORE GAME LORE...SOMETHING ABOUT PLAYER STATS/WEAPONS");
+
+		System.out.println(playerName + ", what room do you want to enter?\n" + "   Dining Room(1)\n"
+				+ "   Living Room(2)\n" + "   Kitchen(3)");
+		
+		do {
+			input = keyboard.nextInt();
+			if (input == 1) {
+				System.out.println("room 1");
+			} else if (input == 2) {
+				System.out.println("room 2");
+			} else if (input == 3) {
+				System.out.println("room 3");
+			} else {
+				System.out.println("Must enter 1, 2, or 3");
+			}
+		} while (input < 1 || input > 3);
 	}
 
 }
