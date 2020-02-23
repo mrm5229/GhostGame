@@ -2,12 +2,10 @@ package ghostgame;
 
 public class Player {
 	
-	String name;
-	int playerHealth = 100;
-	int playerAttack = 0;
-	
-	
-	
+	private String name;
+	private int playerHealth = 100;
+	private int playerAttack = 0;
+
 	public String getName() {
 		return name;
 	}

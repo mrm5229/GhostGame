@@ -6,13 +6,13 @@ package ghostgame;
 
 public class Ghost {
 
-	String name;
-	int damage;
-	int health;
+	private String name;
+	private int damage;
+	private int health;
 
 	// default constructor - initializes name to null and damage they inflict to
 	// zero
-	Ghost() {
+	public Ghost() {
 		name = null;
 		damage = 0;
 	}// end constructor

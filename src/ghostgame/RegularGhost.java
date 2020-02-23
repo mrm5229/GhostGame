@@ -2,12 +2,15 @@ package ghostgame;
 
 public class RegularGhost extends Ghost {
 
-	int escape; // chance of ghost escaping
-	int healthRestore; // health restored to player once ghost is defeated
+	private int escape; // chance of ghost escaping
+	private int healthRestore; // health restored to player once ghost is defeated
 
 	// default constructor
 	public RegularGhost() {
 		super();
+		escape = 20;
+		healthRestore = 10;
+		setDamage(15);	//can't say damage = 15 because it is a private attribute
 	}
 
 	/*
@@ -21,7 +24,7 @@ public class RegularGhost extends Ghost {
 	public RegularGhost(int escape, int damage) {
 		super();
 		this.escape = escape;
-		this.damage = damage;
+		setDamage(damage);
 	}
 
 	/*
@@ -38,7 +41,7 @@ public class RegularGhost extends Ghost {
 	public RegularGhost(int escape, int damage, int healthRestore) {
 		super();
 		this.escape = escape;
-		this.damage = damage;
+		setDamage(damage);
 		this.healthRestore = healthRestore;
 	}
 
