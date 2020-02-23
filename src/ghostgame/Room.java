@@ -10,6 +10,18 @@ public class Room {
 		
 	}
 
+	/**
+	 * Method to check if the room is clear
+	 */
+	public boolean isClear() {
+		boolean result = false;
+		if (enemy.getHealth() <= 0) {
+			result = true;
+		}
+		return result;
+	}
+	
+	
 	public void setName(String name) {
 		this.name = name;
 	}
