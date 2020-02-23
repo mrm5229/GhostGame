@@ -3,16 +3,15 @@ package ghostgame;
 public class RegularGhost extends Ghost {
 
 	int escape; // chance of ghost escaping
-	int damage; // damage inflicted by ghost to player
 	int healthRestore; // health restored to player once ghost is defeated
 
 	// default constructor
 	public RegularGhost() {
-
+		super();
 	}
 
 	/*
-	 * overloaded constructor 1 used for a pre-set escape chance and damage
+	 * overloaded constructor 1 used for a preset escape chance and damage
 	 * inflicted
 	 * 
 	 * @param escape Sets escape chance of ghost
@@ -20,6 +19,7 @@ public class RegularGhost extends Ghost {
 	 * @param damage Sets damage inflicted to character by ghost
 	 */
 	public RegularGhost(int escape, int damage) {
+		super();
 		this.escape = escape;
 		this.damage = damage;
 	}
@@ -36,10 +36,42 @@ public class RegularGhost extends Ghost {
 	 * once the ghost has been defeated
 	 */
 	public RegularGhost(int escape, int damage, int healthRestore) {
+		super();
 		this.escape = escape;
 		this.damage = damage;
 		this.healthRestore = healthRestore;
+	}
 
+	/**
+	 * Used to determine if ghost gets away based on escape chance of ghost. escape
+	 * field is the percentage chance of the ghost escaping.
+	 * 
+	 * @return returns true if ghost escapes attack
+	 */
+	public boolean doesGhostEscape() {
+		boolean result = false;
+		int randomResult;
+		randomResult = (int) (Math.random() * 100);
+		if (randomResult <= escape) {
+			result = true;
+		}
+		return result;
+	}
+
+	public int getEscape() {
+		return escape;
+	}
+
+	public void setEscape(int escape) {
+		this.escape = escape;
+	}
+
+	public int getHealthRestore() {
+		return healthRestore;
+	}
+
+	public void setHealthRestore(int healthRestore) {
+		this.healthRestore = healthRestore;
 	}
 
 }

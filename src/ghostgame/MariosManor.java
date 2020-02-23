@@ -33,6 +33,7 @@ public class MariosManor {
 		test2.setName(input);
 		System.out.println(test2.getName());
 		
+		test2.doesGhostEscape();		
 
 		// END TEST STUFF
 

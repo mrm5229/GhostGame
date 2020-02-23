@@ -4,15 +4,11 @@
 
 package ghostgame;
 
-import java.util.Scanner;
-
 public class Ghost {
 
 	String name;
 	int damage;
 	int health;
-
-	Scanner keyboard = new Scanner(System.in);
 
 	// default constructor - initializes name to null and damage they inflict to
 	// zero
