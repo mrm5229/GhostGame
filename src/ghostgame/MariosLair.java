@@ -35,18 +35,29 @@ public class MariosLair {
 
 		// Game room setup
 		Room bedroom = new Room();
-		RegularGhost lampy = new RegularGhost(); // uses default constructor
-		bedroom.setEnemy(lampy);
 		Room living = new Room();
-		RegularGhost couchy = new RegularGhost(15, 20); // uses overloaded constructor 1
-		living.setEnemy(couchy);
 		Room kitchen = new Room();
-		RegularGhost foody = new RegularGhost(15, 10, 10); // uses overloaded constructor 2
-		// TODO: change foody's parameters to be based on user input difficulty
-		kitchen.setEnemy(foody);
 		Room basement = new Room();
+		
+		RegularGhost lampy = new RegularGhost(); // uses default constructor
+		RegularGhost couchy = new RegularGhost(15, 20); // uses overloaded constructor 1
+		RegularGhost foody = new RegularGhost(15, 10, 10); // uses overloaded constructor 2
 		BossGhost bigBaddy = new BossGhost(); // uses default constructor
+		
+		bedroom.setEnemy(lampy);
+		living.setEnemy(couchy);
+		kitchen.setEnemy(foody);
 		basement.setEnemy(bigBaddy);
+		
+		bedroom.setDescription("SET DESCRIPTION for bedroom");
+		living.setDescription("SET DESCRIPTION");
+		kitchen.setDescription("SET DESCRIPTION");
+		basement.setDescription("SET DESCRIPTION");
+		
+		lampy.setName("Lampy");
+		couchy.setName("Couchy");
+		couchy.setName("Foody");
+		bigBaddy.setName("BigBaddy");
 
 		// Game Begins
 		System.out.println("Welcome...ADD MORE GAME LORE LATER\n" + "What is your name?");
@@ -82,12 +93,13 @@ public class MariosLair {
 
 		System.out.println("ENTER MORE GAME LORE...SOMETHING ABOUT PLAYER STATS/WEAPONS");
 
-		System.out.println(playerName + ", what room do you want to enter?\n" + "   Dining Room(1)\n"
+		System.out.println(playerName + ", what room do you want to enter?\n" + "  Bedroom(1)\n"
 				+ "   Living Room(2)\n" + "   Kitchen(3)");
 		
 		do {
 			input = keyboard.nextInt();
 			if (input == 1) {
+				System.out.println(bedroom.getDescription());
 				System.out.println("room 1");
 			} else if (input == 2) {
 				System.out.println("room 2");
