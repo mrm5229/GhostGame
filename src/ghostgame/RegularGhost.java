@@ -1,5 +1,7 @@
 package ghostgame;
 
+import java.util.Scanner;
+
 public class RegularGhost extends Ghost {
 
 	private int escape; // chance of ghost escaping
@@ -10,12 +12,11 @@ public class RegularGhost extends Ghost {
 		super();
 		escape = 20;
 		healthRestore = 10;
-		setDamage(15);	//can't say damage = 15 because it is a private attribute
+		setDamage(15); // can't say damage = 15 because it is a private attribute
 	}
 
 	/*
-	 * overloaded constructor 1 used for a preset escape chance and damage
-	 * inflicted
+	 * overloaded constructor 1 used for a preset escape chance and damage inflicted
 	 * 
 	 * @param escape Sets escape chance of ghost
 	 * 
@@ -46,19 +47,35 @@ public class RegularGhost extends Ghost {
 	}
 
 	/**
-	 * Used to determine if ghost gets away based on escape chance of ghost. escape
-	 * field is the percentage chance of the ghost escaping.
+	 * This method determines if the ghost can escape based on the chance of escape
+	 * it has set to it
 	 * 
-	 * @return returns true if ghost escapes attack
+	 * @return returns a 1 if ghost escapes attack
 	 */
-	public boolean doesGhostEscape() {
-		boolean result = false;
+	public int doesGhostEscape() {
+		int result;
 		int randomResult;
 		randomResult = (int) (Math.random() * 100);
 		if (randomResult <= escape) {
-			result = true;
+			result = 1;
+		} else {
+			result = 0;
 		}
 		return result;
+	}
+
+	/**
+	 * The doBattle() method asks a user if they want to battle a ghost or run away
+	 * 
+	 * 
+	 * @return returns a 1 if player wants to battle, a 0 if they run away
+	 */
+	public int doBattle() {
+		int input;
+		System.out.println("Do you want to battle or run away?\n" + "   Battle(1)\n" + "   Run Away(2)");
+		Scanner keyboard = new Scanner(System.in);
+		input = keyboard.nextInt();
+		return input;
 	}
 
 	public int getEscape() {

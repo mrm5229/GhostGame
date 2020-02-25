@@ -8,15 +8,15 @@ public class Ghost {
 
 	private String name;
 	private int damage;
-	private int health;
-
+	private int health = 10;
+	
 	// default constructor - initializes name to null and damage they inflict to
 	// zero
 	public Ghost() {
 		name = null;
 		damage = 0;
 	}// end constructor
-
+	
 	public String getName() {
 		return name;
 	}

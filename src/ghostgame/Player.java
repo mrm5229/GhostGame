@@ -4,7 +4,17 @@ public class Player {
 	
 	private String name;
 	private int playerHealth = 100;
-	private int playerAttack = 0;
+	private int playerAttack = 50;
+	
+	public boolean isPlayerDead() {
+		boolean result = false;
+		if (playerHealth <= 0) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
 
 	public String getName() {
 		return name;

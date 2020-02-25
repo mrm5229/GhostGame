@@ -12,11 +12,15 @@ public class Room {
 
 	/**
 	 * Method to check if the room is clear
+	 * 
+	 * returns a 1 if enemy is cleared. 
 	 */
-	public boolean isClear() {
-		boolean result = false;
+	public int isClear() {
+		int result;
 		if (enemy.getHealth() <= 0) {
-			result = true;
+			result = 1;
+		} else {
+			result = 0;
 		}
 		return result;
 	}
