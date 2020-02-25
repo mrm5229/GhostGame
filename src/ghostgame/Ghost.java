@@ -7,8 +7,8 @@ package ghostgame;
 public class Ghost {
 
 	private String name;
-	private int damage;
-	private int health = 10;
+	protected int damage;
+	protected int health = 10;
 	
 	// default constructor - initializes name to null and damage they inflict to
 	// zero

@@ -25,6 +25,7 @@ public class RegularGhost extends Ghost {
 	public RegularGhost(int escape, int damage) {
 		super();
 		this.escape = escape;
+		healthRestore = 10;
 		setDamage(damage);
 	}
 
