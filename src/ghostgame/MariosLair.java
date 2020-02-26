@@ -16,7 +16,7 @@ public class MariosLair {
 	public static void main(String[] args) {
 
 		int input; // holds user String input
-		String playerName; // holds name of player
+		String playerName = "name"; // holds name of player
 		int difficulty; // holds difficulty level selected by player
 
 		Scanner keyboard = new Scanner(System.in);
@@ -38,10 +38,19 @@ public class MariosLair {
 		kitchen.setEnemy(foody);
 		basement.setEnemy(bigBaddy);
 
-		bedroom.setDescription("SET DESCRIPTION for bedroom");
-		living.setDescription("SET DESCRIPTION for living room");
-		kitchen.setDescription("SET DESCRIPTION");
-		basement.setDescription("SET DESCRIPTION");
+		bedroom.setDescription(
+				"\nYou have entered the bedroom. A lamp in the corner begins to violently flicker and shake!.\n"
+						+ "You have encountered Lampy, the lamp ghost!");
+		living.setDescription(
+				"\nYou have entered the living room. A strong wind swirls through the room as the couch begins to hover!\n"
+						+ "You have encountered Couchy, the couch ghost! ");
+		kitchen.setDescription(
+				"\nYou have entered the kitchen. The fridge door swings open and with it emerges a terrifying ghost!\n"
+						+ "You have encountered Foody, the pompous eater ghost!");
+		basement.setDescription("\nAs you clear the last room you hear laughter from the basement.\n"
+				+ "All of the sudden you are pulled down the stairs and the door slams shut behind you!\n"
+				+ "You look around and notice a baseball bat along the wall. You pick it up to use as a weapon.\n"
+				+ "A Big Baddy basement ghost attacks!");
 
 		lampy.setName("Lampy");
 		couchy.setName("Couchy");
@@ -85,11 +94,11 @@ public class MariosLair {
 				System.out.println("Experienced selected");
 			} else if (difficulty == 3) {
 				foody.setEscape(50);
-				foody.setDamage(30);
+				foody.setDamage(20);
 				foody.setHealthRestore(5);
 				ghostHunter.setPlayerAttack1(10);
-				ghostHunter.setPlayerHealth(60);
-				bigBaddy.setDamage(30);
+				ghostHunter.setPlayerHealth(80);
+				bigBaddy.setDamage(25);
 				bigBaddy.setHealth(100);
 				System.out.println("Expert selected");
 			} else {
@@ -97,11 +106,11 @@ public class MariosLair {
 			}
 		} while (difficulty < 1 || difficulty > 3);
 
-		System.out.println("\nAs you enter Mario's Lair you have " + ghostHunter.getPlayerHealth() + 
-				" health and are equipped with an enchanted vacuum to capture the ghosts.\n"
+		System.out.println("\nAs you enter Mario's Lair you have " + ghostHunter.getPlayerHealth()
+				+ " health and are equipped with an enchanted vacuum to capture the ghosts.\n"
 				+ "You are now in the foyer and must start clearing the house.");
-		
-		//loop to clear the 3 main rooms
+
+		// loop to clear the 3 main rooms
 		int check;
 		do {
 			if (ghostHunter.isPlayerDead() == false) {
@@ -121,12 +130,13 @@ public class MariosLair {
 							if (escape == 1) {
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() - lampy.getDamage());
 								System.out.println(lampy.getName()
-										+ " escapes your attack and knocks you back into the foyer! Your health is now: "
+										+ " escapes your attack and shines a bright light into your face, "
+										+ "knocking you back into the foyer!\nYour health is now: "
 										+ ghostHunter.getPlayerHealth());
 							} else {
 								lampy.setHealth(0);
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() + lampy.getHealthRestore());
-								System.out.println("You've sucked up " + lampy.getName()
+								System.out.println("\nIts lights out for " + lampy.getName() + "!\nYou've sucked him"
 										+ " into your vacuum and cleared the Bedroom!\n" + lampy.getHealthRestore()
 										+ " health has been restored. Your health is now "
 										+ ghostHunter.getPlayerHealth());
@@ -147,14 +157,16 @@ public class MariosLair {
 							int escape = couchy.doesGhostEscape();
 							if (escape == 1) {
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() - couchy.getDamage());
-								System.out.println(couchy.getName()
-										+ " escapes your attack and knocks you back into the foyer! Your health is now: "
-										+ ghostHunter.getPlayerHealth());
+								System.out
+										.println(couchy.getName() + " escapes your attack and throws a cushion at you,"
+												+ " knocking you back into the foyer!\nYour health is now: "
+												+ ghostHunter.getPlayerHealth());
 							} else {
 								couchy.setHealth(0);
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() + couchy.getHealthRestore());
-								System.out.println("You've sucked up " + couchy.getName()
-										+ " into your vacuum and cleared the Bedroom!\n" + couchy.getHealthRestore()
+								System.out.println("\nTime to kick " + couchy.getName()
+										+ " to the curb!\nYou've sucked him"
+										+ " into your vacuum and cleared the Living Room!\n" + couchy.getHealthRestore()
 										+ " health has been restored. Your health is now "
 										+ ghostHunter.getPlayerHealth());
 							}
@@ -174,14 +186,15 @@ public class MariosLair {
 							int escape = foody.doesGhostEscape();
 							if (escape == 1) {
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() - foody.getDamage());
-								System.out.println(foody.getName()
-										+ " escapes your attack and knocks you back into the foyer! Your health is now: "
-										+ ghostHunter.getPlayerHealth());
+								System.out.println(
+										foody.getName() + " escapes your attack and pelts you with acai berries"
+												+ " knocking you back into the foyer!\nYour health is now: "
+												+ ghostHunter.getPlayerHealth());
 							} else {
 								foody.setHealth(0);
 								ghostHunter.setPlayerHealth(ghostHunter.getPlayerHealth() + foody.getHealthRestore());
-								System.out.println("You've sucked up " + foody.getName()
-										+ " into your vacuum and cleared the Bedroom!\n" + foody.getHealthRestore()
+								System.out.println(foody.getName() + " is toast!\nYou've sucked him" 
+										+ " into your vacuum and cleared the Kitchen!\n" + foody.getHealthRestore()
 										+ " health has been restored. " + "Your health is now "
 										+ ghostHunter.getPlayerHealth());
 							}
@@ -203,69 +216,66 @@ public class MariosLair {
 
 		} while (check < 3);
 
-		
-		//loop to fight the boss
+		// loop to fight the boss
 		if (ghostHunter.isPlayerDead() == false) {
-			System.out.println("\nAs you clear the last room you hear laughter from the basement.\n"
-					+ "All of the sudden you are pulled down the stairs and the door slams shut behind you! \n"
-					+ "You look around and notice a baseball bat along the wall. You pick it up to use as a new weapon.\n"
-					+ "A Big Baddy basement ghost attacks!\n" + "ENTER more LORE for BOSS GHOST");
+			System.out.println(basement.getDescription());
 			int stop = 0;
 			do {
 				if (ghostHunter.isPlayerDead() == false) {
-					System.out
-							.println("\nWhich weapon would you like to use?\n" + "   Vacuum(1)\n" + "   Baseball Bat(2)");
+					System.out.println(
+							"\nWhich weapon would you like to use?\n" + "   Vacuum(1)\n" + "   Baseball Bat(2)");
 					input = keyboard.nextInt();
 					switch (input) {
 					case 1:
 						ghostHunter.setPlayerHealth((ghostHunter.getPlayerHealth() - bigBaddy.getDamage()));
 						bigBaddy.setHealth(bigBaddy.getHealth() - ghostHunter.getPlayerAttack1());
-						if (bigBaddy.getHealth() >0) {
-						
-						System.out.println("You inflicted " + ghostHunter.getPlayerAttack1() + " so its health is now "
-								+ bigBaddy.getHealth() + "."
-								+ " The ghost counter attacked by throwing basement trash at you doing "
-								+ bigBaddy.getDamage() + " damage! \nYour health is now "
-								+ ghostHunter.getPlayerHealth() + ".");
+						if (bigBaddy.getHealth() > 0) {
+
+							System.out.println("You inflicted " + ghostHunter.getPlayerAttack1()
+									+ " damage.\nBig Baddy's health is now " + bigBaddy.getHealth() + "."
+									+ "\nThe ghost counter attacked by throwing basement trash at you doing "
+									+ bigBaddy.getDamage() + " damage! \nYour health is now "
+									+ ghostHunter.getPlayerHealth() + ".");
 						} else {
-							System.out.println("You inflicted " + ghostHunter.getPlayerAttack1() + " so its health is now "
-							+ bigBaddy.getHealth() + ".");
+							System.out.println("You inflicted " + ghostHunter.getPlayerAttack1()
+									+ ". Big Baddy's health is now " + bigBaddy.getHealth() + ".");
 							break;
 						}
 						break;
 					case 2:
 						ghostHunter.setPlayerHealth((ghostHunter.getPlayerHealth() - bigBaddy.getDamage()));
 						bigBaddy.setHealth(bigBaddy.getHealth() - ghostHunter.getPlayerAttack2());
-						if (bigBaddy.getHealth() >0) {
-							
-							System.out.println("You inflicted " + ghostHunter.getPlayerAttack2() + " so its health is now "
-									+ bigBaddy.getHealth() + "."
-									+ " The ghost counter attacked by throwing basement trash at you doing "
+						if (bigBaddy.getHealth() > 0) {
+
+							System.out.println("You inflicted " + ghostHunter.getPlayerAttack2()
+									+ " damage.\nBig baddy's health is now " + bigBaddy.getHealth() + "."
+									+ "\nThe ghost counter attacked by throwing basement trash at you doing "
 									+ bigBaddy.getDamage() + " damage! \nYour health is now "
 									+ ghostHunter.getPlayerHealth() + ".");
-							} else {
-								System.out.println("You inflicted " + ghostHunter.getPlayerAttack2() + " so its health is now "
-								+ bigBaddy.getHealth() + ".");
-								break;
-							}
+						} else {
+							System.out.println("You inflicted " + ghostHunter.getPlayerAttack2()
+									+ ". Big Baddy's health is now " + bigBaddy.getHealth() + ".");
+							break;
+						}
 						break;
 					default:
 						System.out.println("Not a valid selection");
 					}
 				} else {
-					System.out.println("Out of health\n" + "GAME OVER");
+					System.out.println("\nOut of health\n" + "GAME OVER");
 					stop = 1;
 				}
 			} while (bigBaddy.getHealth() > 0 && stop == 0);
 		} else {
 			System.out.println("Player is out of health\n" + "GAME OVER");
 		}
-		
+
 		if (bigBaddy.getHealth() <= 0) {
-		System.out.println("You defeated Big Baddy basement ghost and cleared the house.\n\n"
-				+ "\t\t***YOU WIN!!!***");
+			System.out.println("\n" + playerName + ", you defeated Big Baddy basement ghost and cleared the house.\n"
+					+ "Mario and Peach can now move into their ghost-free home.\n\n"
+					+ "\t\t***YOU WIN!!!***");
 		}
-		
+
 	}
 
 }
